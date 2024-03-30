@@ -4,7 +4,7 @@ import pandas as pd
 from gbm import  gbm_eğitim
 import dummy
 
-st.title("Sayısal Veri Analizi Uygulaması")
+st.title("Effects of hyperparameters on the model")
 
 df=pd.read_csv("kc_house_data.csv")
 df=df.drop(columns={"id","date","zipcode","yr_renovated"},axis=1)
@@ -25,13 +25,13 @@ def model_seç():
                                     max_depth,
                                     n_estimators,böl)
         st.line_chart(results[0])
-        st.write(results[1],"% Hata Oranı")
+        st.write(results[1],"% Error rate")
 
     if selected_option=="LightGBM":
         results = gbm_eğitim(df,learning_rate,
                                     max_depth,
                                     n_estimators,böl)
         st.line_chart(results[0])
-        st.write(results[1],"% Hata Oranı")
+        st.write(results[1],"% Error rate")
 
 model_seç()

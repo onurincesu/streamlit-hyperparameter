@@ -22,8 +22,8 @@ def gbm_eğitim(df,l_rate,m_depht,n_est,böl):
     return results
 
 def chartgbm(y_test,preds):
-    veri=pd.DataFrame({"Gerçek":y_test,"Tahmin":preds}).sample(n=100,random_state=42)
-    hata_orani = np.abs(veri["Gerçek"] - veri["Tahmin"]) / veri["Gerçek"] * 100
+    veri=pd.DataFrame({"Real":y_test,"Predicted":preds}).sample(n=100,random_state=42)
+    hata_orani = np.abs(veri["Real"] - veri["Predicted"]) / veri["Real"] * 100
     hata_orani=round(sum(hata_orani) / len(hata_orani), 4)
     return veri,hata_orani
 
